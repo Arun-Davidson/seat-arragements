@@ -1,0 +1,87 @@
+// Import the mixins file
+@import '../../../styles/mixins.scss';
+
+#siginPage {
+    padding: 83px 190px;
+    height: 100vh;
+
+    @include respond-to('xlarge') {
+        padding: 83px;
+    }
+
+    .leftside_section {
+        height: 100%;
+
+        .login_Image {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+
+        }
+    }
+
+    .rightside_section {
+        padding: 0 36px;
+
+        .sign-in-container {
+            height: max-content;
+
+            .nav_logo_section {
+                margin-bottom: 50px;
+
+                img {
+                    @include respond-to('xlarge') {
+                        height: 100%;
+                        object-fit: contain;
+                        width: 200px;
+                    }
+                }
+            }
+
+            .signin_heading {
+                font-size: 1.875rem;
+                @include respond-to('xlarge') {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .signin_form {
+                .form_label {
+                    font-size: 12px;
+                    color: #333333;
+                }
+
+                .mat-mdc-text-field-wrapper {
+                    background: #E2EFFF;
+                }
+
+                input::placeholder {
+                    font-size: 1rem !important;
+                    color: #808080;
+                }
+
+                .signin_button {
+                    height: 51px;
+                    background: #3A98FF;
+                    color: #ffff;
+                }
+
+                .forgot_password {
+                    .forgot_password_text {
+                        font-size: 12px;
+                        color: #007AFF;
+                        margin-bottom: 16px;
+                        cursor: pointer;
+                    }
+
+                }
+            }
+        }
+    }
+}

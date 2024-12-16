@@ -1,0 +1,226 @@
+#seatSelectionSection {
+    height: max-content;
+
+    .heading_section {
+        margin-bottom: 60px;
+
+        .header {
+            margin-bottom: 26px;
+        }
+
+        .main_heading {
+            color: #323840;
+            font-size: 22px;
+        }
+
+        .action_section {
+            .view_button {
+                padding: 10px 24px;
+                height: 40px;
+                font-size: 12px;
+                background-color: #FFFFFF;
+                border: 1px solid #392C2C;
+                color: #392C2C;
+            }
+
+            .action_icon {
+                .action_button {
+                    border-radius: 50%;
+                    background-color: #D1D1D1;
+
+                    mat-icon {
+                        font-size: 20px;
+                        height: 20px;
+                        width: 20px;
+                        color: #392C2C;
+                    }
+                }
+            }
+        }
+    }
+
+    .legend {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+
+        .hints {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            color: #323840;
+
+            img {
+                margin-right: 6px;
+            }
+        }
+    }
+
+    .map_view_height {
+        height: 48vh !important;
+    }
+
+    .main_section {
+        height: max-content;
+        overflow-x: scroll;
+        padding-bottom: 32px;
+
+        @mixin seat-grid {
+            height: max-content;
+            position: relative;
+
+            & .seat::after {
+                background-color: red;
+                width: 20px;
+            }
+
+            & .side_bar {
+                &.filled {
+                    background: #EAF0F5;
+                }
+
+                &.vacant,
+                &.selected {
+                    background: #C6C9CC;
+                    cursor: pointer;
+                }
+            }
+
+            & .top_bar {
+                &.filled {
+                    background: #EEF4F8;
+                    border-color: #EAF5E6 !important;
+                }
+
+                &.vacant,
+                &.selected {
+                    background: #DCDDDD;
+                    border-color: #C3E77F !important;
+                }
+            }
+
+            & .even_row {
+                transform: scaleY(-1);
+                //   margin-top: 22px;
+                margin-bottom: -1px;
+            }
+
+            & .odd_seat,
+            & .even_seat {
+                display: flex;
+                height: 66px;
+                width: 58px;
+                border-top: 3px solid;
+                border-radius: 3px 0;
+
+                // Different borders and alignment for odd/even seats
+                &.odd_seat {
+                    // margin-right: 20px;
+                    border-left: 3px solid;
+                }
+
+                &.even_seat {
+                    border-right: 3px solid;
+                    justify-content: flex-end;
+                    z-index: 2;
+                    margin-bottom: -0.5px;
+                    // margin-right: -1px;
+                }
+
+                &.filled {
+                    border-color: #E4E9EE;
+                }
+
+                &.vacant,
+                &.selected {
+                    border-color: #C6C9CC;
+                    cursor: pointer;
+                }
+
+                .side_bar {
+                    width: 10px;
+                    height: 58px;
+                    border-radius: 6px;
+                }
+
+                .seat {
+                    width: 60%;
+
+                    .top_bar {
+                        height: 10px;
+                        border-radius: 4px 4px 0px 0px;
+                        border-bottom: 1px solid;
+                    }
+
+
+                }
+            }
+        }
+
+        @mixin hor-flip-property {
+            -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            filter: FlipH;
+            -ms-filter: "FlipH";
+        }
+
+        .odd_section {
+            max-width: 500px;
+            @include seat-grid;
+
+            .even_seat {
+                margin-right: -1px;
+
+                .image_section {
+                    margin: 4px 0px 0px 4px;
+                    display: inline-block;
+
+                    img {
+                        transform: scaleX(-1);
+                    }
+                }
+            }
+
+            .odd_seat {
+                margin-right: 20px;
+
+                .image_section {
+                    margin: 4px 0px 0px 4px;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .even_section {
+            max-width: 500px;
+            @include seat-grid;
+
+            .even_seat {
+                @include hor-flip-property;
+                margin-right: 20px;
+
+                .image_section {
+                    margin: 4px 0px 0px 4px;
+                    display: inline-block;
+
+                    img {
+                        transform: scaleX(-1);
+                    }
+                }
+            }
+
+            .odd_seat {
+                @include hor-flip-property;
+                margin-right: 0;
+
+                .image_section {
+                    margin: 4px 0px 0px 4px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

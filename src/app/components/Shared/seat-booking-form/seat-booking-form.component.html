@@ -1,0 +1,81 @@
+<div fxFlex="100" id="sidebarSection">
+    <form [formGroup]="bookingForm">
+        <mat-card>
+            <mat-card-content>
+                <div fxFlex="100" fxLayout="row wrap">
+                    <span fxFlex="100" class="feild-mb-gp">
+                        <img src="icons/nav_logo.png" alt="" srcset="">
+                    </span>
+                    <div fxFlex="100" fxLayout="row wrap" class="feild-mb-gp">
+                        <mat-label class="mat-label">Building Name</mat-label>
+                        <mat-form-field fxFlex="100" appearance="outline" class="nav_form_field">
+                            <mat-select formControlName="buildingName" placeholder="Select Building">
+                                <mat-option *ngFor="let building of buildingArray"
+                                    [value]="building?.name">{{building?.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxLayout="row wrap" class="feild-mb-gp">
+                        <mat-label fxFlex="100" class="mat-label">Select Floor</mat-label>
+
+                        <span>
+                            <mat-button-toggle-group formControlName="selectedFloor"
+                                [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()" fxLayoutGap="12px"
+                                 #group="matButtonToggleGroup">
+                                <mat-button-toggle (click)="floorSelection(floor,ind)" class="floor_button"
+                                    [value]="floor?.label"
+                                    *ngFor="let floor of floors;let ind= index">{{floor?.label}}</mat-button-toggle>
+                            </mat-button-toggle-group>
+
+                            <!-- <button class="floor_button" *ngFor="let floor of floors;let ind= index" mat-mini-fab
+                                [ngClass]="{ selected: floor.selected }" (click)="floorSelection(floor,ind)"
+                                aria-label="Number button">
+                                {{floor?.label}}
+                            </button> -->
+                        </span>
+                    </div>
+                    <div fxFlex="100" fxLayout="row wrap" class="feild-mb-gp">
+                        <mat-label fxFlex="100" class="mat-label">Select Date</mat-label>
+
+                        <div class="date-range-display">
+                            <span class="selected_date"
+                                *ngIf="selectedDateRange?.start && selectedDateRange?.end">{{selectedDateRange.start
+                                | date :'dd MMM'}} - {{selectedDateRange.end | date :'dd MMM'}}</span>
+
+                        </div>
+
+                        <mat-card fxFlex="100" fxLayout="row wrap" class="select-inline-calendar-card">
+
+                            <mat-calendar fxFlex="100" (selectedChange)="_onSelectedChange($event)"
+                                [selected]="selectedDateRange">
+                            </mat-calendar>
+                        </mat-card>
+
+                    </div>
+                    <div fxFlex="100" fxLayout="row wrap" class="feild-mb-gp time_select_section" fxLayoutGap="32px">
+                        <div fxFlex="30" fxLayout="row wrap">
+                            <mat-label fxFlex="100" class="mat-label">Start Time</mat-label>
+                            <mat-form-field appearance="outline" class="nav_form_field">
+                                <input formControlName="bookingStartTime" matInput [ngxMatTimepicker]="picker" />
+                                <ngx-mat-timepicker color="primary" #picker></ngx-mat-timepicker>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="30" fxLayout="row wrap">
+                            <mat-label fxFlex="100" class="mat-label">End Time</mat-label>
+                            <mat-form-field appearance="outline" class="nav_form_field">
+                                <input matInput formControlName="bookingEndTime" [ngxMatTimepicker]="endTimePicker" />
+                                <ngx-mat-timepicker color="accent" #endTimePicker></ngx-mat-timepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxLayout="row wrap" class="feild-mb-gp">
+                        <button fxFlex="100" color="accent" class="submit_button" (click)="bookSeat()" mat-fab
+                            aria-label="Book My Seat">
+                            Book My Seat
+                        </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>

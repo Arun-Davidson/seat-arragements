@@ -1,0 +1,47 @@
+<div id="seatSelectionSection" fxFlex="100" fxLayout="row wrap">
+    <div fxFlex="100" fxLayout="row wrap" class="heading_section">
+        <div fxFlex="100" class="header">
+            <div fxFlex="50" class="main_heading" fxLayoutAlign="start center">
+                <img src="icons/building.svg" alt="building" srcset="">
+                Bhavani Building Floor 2
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end center" class="action_section" fxLayoutGap="20px">
+                <button *ngIf="from == 'main_view'" (click)="openDialog()" mat-raised-button class="view_button">View full Map</button>
+                <span class="action_icon" fxLayoutGap="6px">
+                    <button mat-mini-fab class="action_button"><mat-icon>add</mat-icon></button>
+                    <button mat-mini-fab class="action_button"><mat-icon>remove</mat-icon></button>
+                </span>
+            </div>
+        </div>
+        <div class="legend" fxFlex="100">
+            <span class="hints"><img src="icons/booked.png" alt="booked"> Filled Seat</span>
+            <span class="hints"><img src="icons/available.png" alt="booked"> Vacant Seat</span>
+            <span class="hints"><img src="icons/selected.png" alt="booked"> Your Selected Seat</span>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="137px" class="main_section" [ngClass]="{'map_view_height':from == 'full_view'}" fxFlex="100">
+        <div fxLayout="row wrap" *ngFor="let section of sections;let secIndex=index"
+            [ngClass]="secIndex % 2 !== 0?'even_section': 'odd_section'">
+            <ng-container *ngFor="let row of section?.rows; let ind = index">
+                <div class="seat-grid row" fxFlex="100" fxLayout="row"
+                    [ngClass]="ind % 2 !== 0?'even_row': 'odd_row'">
+                    <div *ngFor="let seat of row?.seats;let i = index" class="seat-section"
+                        [ngClass]="[i % 2 !== 0?'even_seat': 'odd_seat', seat.status]">
+                        <div class="side_bar" [ngClass]="seat.status" *ngIf="i % 2 == 0"></div>
+                        <div class="seat">
+                            <div class="top_bar" [ngClass]="seat.status"> </div>
+                            <span class="image_section">
+                                <img *ngIf="seat.status =='filled'" src="icons/filled-seat.png" alt="booked">
+                                <img *ngIf="seat.status =='vacant'" src="icons/available_icon.png"
+                                    alt="available">
+                                <img *ngIf="seat.status =='selected'" src="icons/selected-seat.png"
+                                    alt="available">
+                            </span>
+                        </div>
+                        <div class="side_bar" [ngClass]="seat.status" *ngIf="i % 2 !== 0"></div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

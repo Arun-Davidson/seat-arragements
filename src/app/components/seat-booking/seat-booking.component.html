@@ -1,0 +1,11 @@
+<div class="seat-map" fxFlex="100" fxLayout="row wrap">   
+    <div fxFlex="100" fxLayoutGap="40px">
+        <div fxFlex="70" fxLayout="row wrap"class="heading_section">
+                                        
+            <app-seat-selection fxFlex="100" [from]="'main_view'" (viewFullMapEvent)="viewFullMapHandler($event)" [sections]="sections"></app-seat-selection>         
+        </div>
+        <div fxFlex="30">
+            <app-seat-booking-form fxFlex="100"></app-seat-booking-form>
+        </div>
+    </div>
+</div>

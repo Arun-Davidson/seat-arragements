@@ -1,0 +1,23 @@
+<!-- src/app/components/header/header.component.html -->
+<header class="toolbar">
+  <nav>
+    <a [routerLink]="['/home']" [routerLinkActive]="['is-active']" class="nav_link">
+      <button mat-button>Home</button>
+    </a>
+    <a [routerLink]="['/booking-summary']" [routerLinkActive]="['is-active']" class="nav_link">
+    <button mat-button>History</button>
+    </a>
+  </nav>
+  <div class="greeting">
+    <span>Good Evening, {{userName}}</span>
+    <span class="avatar_icon" [matMenuTriggerFor]="menu">
+      <img src="icons/avatar.png" alt="Avatar" class="avatar" />
+    </span>
+    <mat-menu #menu="matMenu">      
+      <button mat-menu-item (click)="logout()">
+        <span>Logout</span> 
+        <mat-icon class="icon-end">logout</mat-icon>
+      </button>
+    </mat-menu>
+  </div>
+</header>

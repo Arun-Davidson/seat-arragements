@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css'; // Import Material theme
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F3F9FF;}
+.mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper{
+    padding: 0 !important;
+}
+.nav_form_field {
+    .mat-mdc-text-field-wrapper {
+      background: #F2F2F2;
+    }
+  
+    .mat-mdc-form-field-infix {
+      // padding: 10px 0;
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      min-height: 40px;
+      line-height: 1rem;
+  
+      .mat-mdc-select-trigger {
+        font-size: 12px;
+      }
+    }
+  
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+  }
+
+  .mdc-button{
+    border-radius: 5px !important;
+    box-shadow: none !important;
+  }
+//   .cdk-overlay-dark-backdrop{
+//     background: rgb(250 250 250 / 60%) !important;
+//   }
+
