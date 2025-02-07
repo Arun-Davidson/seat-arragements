@@ -1,0 +1,19 @@
+
+<div id="summaryContent" [fxFlex]="from=='summary_page'? 40:100" fxLayout="row wrap"
+    fxLayoutAlign="center center">
+    <span class="heading_logo">
+        <img src="icons/GH_logo.png" alt="logo">
+    </span>
+    <h1 [ngClass]="from=='summary_page'?'summary_heading':'confirmation_heading'">{{contentHeading}}</h1>
+    <p *ngIf="from=='summary_page'" class="content_note" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center">
+        Looks like you've wandered into uncharted territory. Our comfy chairs and cozy couches are feeling a bit lonely
+        without you.</p>
+        <div fxFlex="100" fxLayout="row wrap" class="content_note" *ngIf="from=='cofirmation_page'">
+            <p fxFlex="100" class="content_note_data">{{confirmationData?.buildingName}} Floor {{confirmationData?.selectedFloor}}</p>
+            <p fxFlex="100" class="content_note_data">{{confirmationData?.bookingDate.start
+                                | date :'dd MMM'}} - {{confirmationData?.bookingDate.end | date :'dd MMM'}}&nbsp;&nbsp;&nbsp;&nbsp;{{formatTime(confirmationData?.bookingStartTime)  }} to {{formatTime(confirmationData?.bookingEndTime) }}</p>
+        </div>
+    <button fxLayout="row wrap" color="accent" class="home_button" (click)="redirectToHome()" mat-button aria-label="Go to Home">
+        Go to Home
+    </button>
+</div>

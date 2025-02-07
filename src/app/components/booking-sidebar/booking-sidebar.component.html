@@ -1,0 +1,39 @@
+<div class="booking-sidebar">
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Building Name</mat-label>
+        <mat-select formControlName="building">
+          <mat-option *ngFor="let building of buildings" [value]="building">{{ building }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="floor-select">
+        <span>Select Floor</span>
+        <mat-button-toggle-group formControlName="floor" [value]="1">
+          <mat-button-toggle *ngFor="let floor of floors" [value]="floor">{{ floor }}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+  
+      <mat-form-field>
+        <mat-label>Select Date</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="startDate">
+          <input matEndDate formControlName="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Start Time</mat-label>
+        <input matInput type="time" formControlName="startTime">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>End Time</mat-label>
+        <input matInput type="time" formControlName="endTime">
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Book My Seat</button>
+    </form>
+  </div>

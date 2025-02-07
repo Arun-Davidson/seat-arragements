@@ -1,0 +1,45 @@
+<div fxFlex="100" fxLayout="row wrap" id="siginPage">
+    <div fxFlex="40" class="leftside_section">
+        <span class="login_Image">
+            <img src="images/login_image.png" alt="login_image" srcset="">
+        </span>
+    </div>
+    <div fxFlex="60" fxLayout="row wrap" class="rightside_section" fxLayoutAlign="center center">
+        <div class="sign-in-container" fxFlex="100" fxLayout="column">
+            <span fxFlex="100" fxLayoutAlign="center center" class="nav_logo_section">
+                <img src="images/signin_gh_logo.png" alt="nav_logo" srcset="">
+            </span>
+            <h2 fxFlex="100" class="signin_heading">Book Your Favourite Seat</h2>
+            <form fxFlex="100" fxLayout="column" [formGroup]="signinForm" class="signin_form">
+                <mat-label  fxFlex="100" class="form_label">Login</mat-label>
+                <mat-form-field fxFlex="100" appearance="outline" class="">
+                    <input matInput type="text" placeholder="Enter Your User ID" formControlName="username"
+                        name="username" required />
+                        @if (signinForm.get('username')?.hasError('required')) {
+                            <mat-error>User ID is required</mat-error>
+                          }
+                </mat-form-field>
+
+                <mat-label fxFlex="100" class="form_label">Password</mat-label>
+                <mat-form-field fxFlex="100" appearance="outline" class="">
+                    <input matInput placeholder="Enter Your Password" [type]="hide() ? 'password' : 'text'" formControlName="password" required />
+                    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if (signinForm.get('password')?.hasError('required')) {
+                        <mat-error>Please input correct password</mat-error>
+                      }
+                </mat-form-field>
+                <span class="forgot_password" fxFlex="100" fxLayoutAlign="end center">
+                   <span class="forgot_password_text">
+                    Forgot password?
+                   </span> 
+                </span>
+                <div fxFlex="100">
+                    <button class="signin_button" fxFlex="100" (click)="onLogin()" mat-raised-button>Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

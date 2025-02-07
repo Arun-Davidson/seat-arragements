@@ -1,0 +1,59 @@
+#summaryContent {
+    height: 70vh;
+
+    .heading_logo {
+        margin-bottom: 26px;
+    }
+
+    @mixin content_heading {
+        color: #93D500;
+        text-align: center;
+    }
+
+    .summary_heading {
+        @include content_heading;
+        font-size: 45px;
+    }
+
+    .confirmation_heading {
+        @include content_heading;
+        font-size: 30px;
+        line-height: normal;
+        margin-bottom: 22px;
+    }
+
+    @mixin note_layout {
+        text-align: center;
+        font-size: 16px;
+        color: #000000;
+        font-weight: 500;
+    }
+
+    .content_note {
+        @include note_layout;
+        margin-bottom: 40px;
+
+        .content_note_data {
+            @include note_layout;
+        }
+    }
+
+    .home_button {
+        background: #93d5004f;
+        color: #202D04;
+        font-weight: 600;
+        width: 282px;
+        height: 51px;
+
+    }
+
+    .mat-mdc-button:hover .mat-mdc-button-persistent-ripple::before,
+    .mat-mdc-button:active .mat-mdc-button-persistent-ripple::before,
+    .mat-mdc-button.cdk-program-focused .mat-mdc-button-persistent-ripple::before,
+    .mat-mdc-button.cdk-keyboard-focused .mat-mdc-button-persistent-ripple::before,
+    .mat-mdc-button.mat-mdc-button-disabled-interactive:focus .mat-mdc-button-persistent-ripple::before {
+        opacity: 0 !important;
+    }
+
+
+}

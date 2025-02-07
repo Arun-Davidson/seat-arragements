@@ -1,0 +1,27 @@
+.main{
+    padding: 60px 50px;
+}
+
+// Define basic layout styles
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; // Full viewport height
+
+    .content {
+        flex: 1; // Allow this section to grow and take remaining space        
+        overflow-y: auto; // Enable scrolling for body content
+      }
+
+  }
+  
+
+  
+ 
